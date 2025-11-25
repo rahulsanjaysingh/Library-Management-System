@@ -150,15 +150,19 @@ App launches with full GUI.
 
 ---
 
-📄 Included
+### 📄 Included
 
-✔ Complete LibraryApp.java
-✔ Swing UI code
-✔ MySQL integration
-✔ JDBC CRUD operations
-✔ JavaSE-23 runtime environment
-✔ VS Code project structure
-## 🔌 Database Requirements
+- ✔ Complete LibraryApp.java  
+- ✔ Swing UI code  
+- ✔ MySQL integration  
+- ✔ JDBC CRUD operations  
+- ✔ JavaSE-23 runtime environment  
+- ✔ VS Code project structure  
+
+---
+
+### 🔌 Database Requirements
+
 
 Create a MySQL database with the following structure:
 
