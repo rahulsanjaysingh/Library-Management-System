@@ -80,13 +80,16 @@ Inside `LibraryApp.java` you have:
 
 ---
 
-🧠 OOP Concepts Used
-Concept	How It Is Used
-Encapsulation	Data variables + getters/setters in components & DB functions
-Abstraction	Separate logical methods for DB operations, UI updates, etc.
-Inheritance	LibraryApp extends JFrame
-Polymorphism	Overriding event listeners (e.g., actionPerformed)
-Modularity	Organized methods for each operation
+### 🧠 OOP Concepts Used
+
+| Concept       | How It Is Used |
+|---------------|----------------|
+| Encapsulation | Data variables + getters/setters in components & DB functions |
+| Abstraction   | Separate logical methods for DB operations, UI updates, etc. |
+| Inheritance   | `LibraryApp` extends `JFrame` |
+| Polymorphism  | Overriding event listeners (e.g., `actionPerformed`) |
+| Modularity    | Organized methods for each operation |
+
 
 ---
 
