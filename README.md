@@ -93,12 +93,16 @@ Inside `LibraryApp.java` you have:
 
 ---
 
+### ⚙️ JDBC Connectivity
+
+```java
 Class.forName("com.mysql.cj.jdbc.Driver");
 Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/library",
-        "root",
-        "yourpassword"
+    "jdbc:mysql://localhost:3306/library",
+    "root",
+    "yourpassword"
 );
+```
 
 ---
 
@@ -129,6 +133,7 @@ Connection con = DriverManager.getConnection(
 +-------------+
 | Updated UI  |
 +-------------+
+
 
 ---
 
