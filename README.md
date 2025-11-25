@@ -105,35 +105,35 @@ Connection con = DriverManager.getConnection(
 ```
 
 ---
+### 📤 Functional Flowchart
 
 +---------+
-|  User   |
+| User |
 +---------+
-     |
-     v
+|
+v
 +--------------------+
-|  LibraryApp (UI)   |
-| Swing JFrame       |
+| LibraryApp (UI) |
+| Swing JFrame |
 +--------------------+
-     |
-     v
+|
+v
 +--------------------+
-|  JDBC Layer        |
-| DriverManager      |
+| JDBC Layer |
+| DriverManager |
 +--------------------+
-     |
-     v
+|
+v
 +--------------------+
-| MySQL Database     |
-| Books / Members    |
-| Issue Records      |
+| MySQL Database |
+| Books / Members |
+| Issue Records |
 +--------------------+
-     |
-     v
+|
+v
 +-------------+
-| Updated UI  |
+| Updated UI |
 +-------------+
-
 
 ---
 
