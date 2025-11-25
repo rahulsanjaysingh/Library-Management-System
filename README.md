@@ -1,1 +1,229 @@
 # Library-Management-System
+📚 Library Management System
+(Java Swing + JDBC + MySQL + MVC-ish layered design)
+
+This project is a desktop-based Library Management System built using Java Swing for GUI and JDBC + MySQL for backend storage.
+It demonstrates practical knowledge of DBMS, SQL, JDBC operations, GUI design, event handling, validation, and CRUD operations.
+
+Designed for academic submission, but structured cleanly for future expansion.
+
+📌 Overview
+
+The application provides an interactive desktop UI to manage:
+
+Books
+
+Members
+
+Issue & Return transactions
+
+Date handling and record tracking
+
+MySQL-based persistent storage
+
+The code demonstrates:
+
+Java Swing (JFrame, JTable, Panels, EventListeners)
+
+JDBC Connectivity (CRUD)
+
+MySQL relational operations
+
+Input validation using regex
+
+DAO-like separation (DB helper functions)
+
+Multi-screen navigation inside a single JFrame
+
+📂 Project Structure (Based on Your Image)
+LibraryManagementSystem/
+│
+├── src/
+│   ├── LibraryApp.java   # Main GUI + JDBC code
+│   ├── LibraryApp.class  # Auto-generated compiled class
+
+
+Inside LibraryApp.java you have:
+
+MySQL connection details
+
+UI components (buttons, fields, tables)
+
+Functions for:
+
+Adding books
+
+Adding members
+
+Issuing books
+
+Returning books
+
+Searching
+
+Updating JTable
+
+SQL insert/update/delete/select queries
+
+🛠 Technologies Used
+Layer	Technology
+GUI (Frontend)	Java Swing (JFrame, JTable, JPanel, JButton)
+Backend	Java JDBC
+Database	MySQL
+Date Handling	java.time.LocalDate, java.sql.Date
+Validation	java.util.regex.Pattern
+Threading	Swing Event Dispatch Thread
+Build/Run	JDK 23
+🔌 Database Requirements
+
+MySQL database should include basic tables such as:
+
+Sample Structure (MySQL)
+CREATE DATABASE IF NOT EXISTS library;
+
+USE library;
+
+CREATE TABLE books (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    author VARCHAR(100),
+    isbn VARCHAR(50),
+    added_date DATE
+);
+
+CREATE TABLE members (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE issue_records (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    member_id INT,
+    book_id INT,
+    issue_date DATE,
+    return_date DATE,
+    FOREIGN KEY(member_id) REFERENCES members(id),
+    FOREIGN KEY(book_id) REFERENCES books(id)
+);
+
+🧩 Key Features (As Visible in Code)
+✔ Add Books
+
+Stores new book details into DB using INSERT query.
+
+✔ Add Members
+
+Saves member information (name, email, etc.).
+
+✔ Issue a Book
+
+Checks if book exists & is available
+
+Inserts an issue record into DB
+
+✔ Return a Book
+
+Updates return_date
+
+Marks book as available again
+
+✔ Search / List
+
+Uses JDBC SELECT queries
+
+Fills JTable dynamically
+
+✔ Validation
+
+Regex-based input checking (numbers, email, ISBN etc.)
+
+🧠 OOP Concepts Used
+OOP Concept	How It Is Used
+Encapsulation	Data variables + getters/setters in components & DB functions
+Abstraction	Separate logical methods for DB operations, UI updates, etc.
+Inheritance	LibraryApp extends JFrame
+Polymorphism	Overriding event listeners (e.g., actionPerformed)
+Modularity	Organized methods for each operation
+⚙️ JDBC Connectivity (From your code)
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con = DriverManager.getConnection(
+        "jdbc:mysql://localhost:3306/library",
+        "root",
+        "yourpassword"
+);
+
+
+Using PreparedStatement for safe queries
+
+Uses ResultSet to populate tables
+
+Auto-commit controlled for multi-step operations
+
+🎨 GUI (Swing)
+
+Your LibraryApp.java includes:
+
+JFrame as main window
+
+JPanel sections (buttons, forms, and tables)
+
+JTable for displaying DB records
+
+Event listeners for button clicks
+
+ScrollPane, Layout Managers, Icons, etc.
+
+📤 Typical Flow (Functional Flowchart)
++---------+
+|  User   |
++---------+
+     |
+     v
++--------------------+
+|  LibraryApp (UI)   |
+| Swing JFrame       |
++--------------------+
+     |
+     v
++--------------------+
+|  JDBC Layer        |
+| DriverManager      |
++--------------------+
+     |
+     v
++--------------------+
+| MySQL Database     |
+| Books / Members    |
+| Issue Records      |
++--------------------+
+     |
+     v
++-------------+
+| Updated UI  |
++-------------+
+
+🚀 How to Run
+
+Install MySQL and create the required tables.
+
+Download & add MySQL Connector/J to Referenced Libraries.
+
+Open project in VS Code or IntelliJ.
+
+Run:
+
+javac LibraryApp.java
+java LibraryApp
+
+
+App launches with full GUI.
+
+📄 Included (Based on Your Project)
+
+✔ Complete LibraryApp.java
+✔ Swing UI code
+✔ MySQL integration
+✔ JDBC CRUD operations
+✔ JavaSE-23 runtime environment
+✔ VS Code project structure
