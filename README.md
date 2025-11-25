@@ -1,229 +1,169 @@
-# Library-Management-System
-📚 Library Management System
-(Java Swing + JDBC + MySQL + MVC-ish layered design)
+📚 Library Management System (Java Swing + JDBC + MySQL)
 
-This project is a desktop-based Library Management System built using Java Swing for GUI and JDBC + MySQL for backend storage.
-It demonstrates practical knowledge of DBMS, SQL, JDBC operations, GUI design, event handling, validation, and CRUD operations.
+A desktop-based Library Management System built using Java Swing, JDBC, and MySQL.
+This project demonstrates GUI-based CRUD operations, JDBC connectivity, SQL queries, and clean modular code structure.
 
-Designed for academic submission, but structured cleanly for future expansion.
+Designed for academic submission and portfolio demonstration with focus on Java OOP, UI design, and database handling.
 
-📌 Overview
+✅ Features
+🎯 Core Functionalities
 
-The application provides an interactive desktop UI to manage:
+Add new books
 
-Books
+Update book details
 
-Members
+Delete books
 
-Issue & Return transactions
+Search books
 
-Date handling and record tracking
+View complete list of books
 
-MySQL-based persistent storage
+Mark a book as issued / not issued
 
-The code demonstrates:
+🏗 Architectural Concepts Used
 
-Java Swing (JFrame, JTable, Panels, EventListeners)
+Java Swing GUI (JFrame, JPanel, JTable, JTextField, etc.)
 
-JDBC Connectivity (CRUD)
+JDBC (DriverManager, PreparedStatement, ResultSet)
 
-MySQL relational operations
+DAO Pattern (separate database access layer)
 
-Input validation using regex
+MVC-inspired structure (Model → DAO → UI)
 
-DAO-like separation (DB helper functions)
+OOP Concepts
 
-Multi-screen navigation inside a single JFrame
+Encapsulation (Book model)
 
-📂 Project Structure (Based on Your Image)
+Abstraction (DAO layer)
+
+Modular class design
+
+📂 Project Structure
 LibraryManagementSystem/
-│
 ├── src/
-│   ├── LibraryApp.java   # Main GUI + JDBC code
-│   ├── LibraryApp.class  # Auto-generated compiled class
+│   ├── LibraryApp.java        # Main Swing UI (JFrame)
+│   ├── BookDAO.java           # Data Access Layer (CRUD operations)
+│   ├── DBUtil.java            # MySQL connection helper
+│   ├── Book.java              # Book model (POJO)
+│
+├── LibraryApp.class
+├── Main.class (if generated)
+│
+├── Referenced Libraries/
+│   └── mysql-connector-j.jar  # Required JDBC driver
+│
+└── JRE System Library [JavaSE-23]
 
+🖼 UI Preview
 
-Inside LibraryApp.java you have:
+Your uploaded screenshot is stored at:
 
-MySQL connection details
+/mnt/data/bfdaea36-4d08-4eda-af95-9ecbd550401a.png
 
-UI components (buttons, fields, tables)
+You can embed it in GitHub like this:
 
-Functions for:
-
-Adding books
-
-Adding members
-
-Issuing books
-
-Returning books
-
-Searching
-
-Updating JTable
-
-SQL insert/update/delete/select queries
+![UI Screenshot](bfdaea36-4d08-4eda-af95-9ecbd550401a.png)
 
 🛠 Technologies Used
 Layer	Technology
-GUI (Frontend)	Java Swing (JFrame, JTable, JPanel, JButton)
-Backend	Java JDBC
+Frontend / UI	Java Swing
 Database	MySQL
-Date Handling	java.time.LocalDate, java.sql.Date
-Validation	java.util.regex.Pattern
-Threading	Swing Event Dispatch Thread
-Build/Run	JDK 23
-🔌 Database Requirements
+Backend Connectivity	JDBC
+Architecture	DAO + Modular Classes
+Language	Java SE 23
+🗄 Database Setup
 
-MySQL database should include basic tables such as:
+Run these SQL commands:
 
-Sample Structure (MySQL)
 CREATE DATABASE IF NOT EXISTS library;
 
 USE library;
 
 CREATE TABLE books (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(100),
-    author VARCHAR(100),
-    isbn VARCHAR(50),
-    added_date DATE
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    isbn VARCHAR(30),
+    issued BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE members (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100),
-    email VARCHAR(100)
-);
+🔌 JDBC Configuration
 
-CREATE TABLE issue_records (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    member_id INT,
-    book_id INT,
-    issue_date DATE,
-    return_date DATE,
-    FOREIGN KEY(member_id) REFERENCES members(id),
-    FOREIGN KEY(book_id) REFERENCES books(id)
-);
+Update credentials inside DBUtil.java:
 
-🧩 Key Features (As Visible in Code)
-✔ Add Books
-
-Stores new book details into DB using INSERT query.
-
-✔ Add Members
-
-Saves member information (name, email, etc.).
-
-✔ Issue a Book
-
-Checks if book exists & is available
-
-Inserts an issue record into DB
-
-✔ Return a Book
-
-Updates return_date
-
-Marks book as available again
-
-✔ Search / List
-
-Uses JDBC SELECT queries
-
-Fills JTable dynamically
-
-✔ Validation
-
-Regex-based input checking (numbers, email, ISBN etc.)
-
-🧠 OOP Concepts Used
-OOP Concept	How It Is Used
-Encapsulation	Data variables + getters/setters in components & DB functions
-Abstraction	Separate logical methods for DB operations, UI updates, etc.
-Inheritance	LibraryApp extends JFrame
-Polymorphism	Overriding event listeners (e.g., actionPerformed)
-Modularity	Organized methods for each operation
-⚙️ JDBC Connectivity (From your code)
-Class.forName("com.mysql.cj.jdbc.Driver");
-Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/library",
-        "root",
-        "yourpassword"
-);
+private static final String URL  = "jdbc:mysql://localhost:3306/library";
+private static final String USER = "root";
+private static final String PASS = "yourpassword";
 
 
-Using PreparedStatement for safe queries
+Also make sure MySQL Connector/J is added to your project.
 
-Uses ResultSet to populate tables
+🧩 How It Works — Flowchart
++------------------+
+|     User         |
++------------------+
+          |
+          v
++------------------------+
+| LibraryApp (Swing UI) |
++------------------------+
+          |
+          v
++------------------------+
+| BookDAO (DB Layer)     |
++------------------------+
+          |
+          v
++------------------------+
+|   JDBC Driver          |
++------------------------+
+          |
+          v
++------------------------+
+|    MySQL Database      |
++------------------------+
 
-Auto-commit controlled for multi-step operations
+💡 OOP Concepts Used
+✔ Encapsulation
 
-🎨 GUI (Swing)
+Book.java contains private fields with getters/setters.
 
-Your LibraryApp.java includes:
+✔ Abstraction
 
-JFrame as main window
+BookDAO hides SQL complexity from UI.
 
-JPanel sections (buttons, forms, and tables)
+✔ Polymorphism
 
-JTable for displaying DB records
+Can extend components (e.g., JFrame, JTable) for custom behavior.
 
-Event listeners for button clicks
+✔ Modular Design
 
-ScrollPane, Layout Managers, Icons, etc.
+Each class handles one responsibility.
 
-📤 Typical Flow (Functional Flowchart)
-+---------+
-|  User   |
-+---------+
-     |
-     v
-+--------------------+
-|  LibraryApp (UI)   |
-| Swing JFrame       |
-+--------------------+
-     |
-     v
-+--------------------+
-|  JDBC Layer        |
-| DriverManager      |
-+--------------------+
-     |
-     v
-+--------------------+
-| MySQL Database     |
-| Books / Members    |
-| Issue Records      |
-+--------------------+
-     |
-     v
-+-------------+
-| Updated UI  |
-+-------------+
+▶️ How to Run
 
-🚀 How to Run
+Install JDK (17+ recommended)
 
-Install MySQL and create the required tables.
+Install MySQL
 
-Download & add MySQL Connector/J to Referenced Libraries.
+Import project in VS Code / IntelliJ / Eclipse
 
-Open project in VS Code or IntelliJ.
+Add MySQL Connector/J JAR
+
+Update credentials in DBUtil.java
 
 Run:
 
-javac LibraryApp.java
 java LibraryApp
 
+📦 Project Files Included
 
-App launches with full GUI.
+Full GUI source code
 
-📄 Included (Based on Your Project)
+DAO + Model classes
 
-✔ Complete LibraryApp.java
-✔ Swing UI code
-✔ MySQL integration
-✔ JDBC CRUD operations
-✔ JavaSE-23 runtime environment
-✔ VS Code project structure
+Database SQL script
+
+Screenshot of application UI
+
+README.md (this file)
