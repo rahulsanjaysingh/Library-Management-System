@@ -69,14 +69,14 @@ Inside `LibraryApp.java` you have:
 
 ---
 
-🧩 Key Features
+### 🧩 Key Features
 
-✔ Add Books – Stores new book details into DB using INSERT query
-✔ Add Members – Saves member information (name, email, etc.)
-✔ Issue a Book – Checks availability and inserts an issue record
-✔ Return a Book – Updates return_date and marks book available again
-✔ Search / List – Uses JDBC SELECT queries and populates JTable dynamically
-✔ Validation – Regex-based input checking (numbers, email, ISBN, etc.)
+- **Add Books** – Stores new book details into DB using INSERT query  
+- **Add Members** – Saves member information (name, email, etc.)  
+- **Issue a Book** – Checks availability and inserts an issue record  
+- **Return a Book** – Updates `return_date` and marks book available again  
+- **Search / List** – Uses JDBC SELECT queries and populates JTable dynamically  
+- **Validation** – Regex-based input checking (numbers, email, ISBN, etc.)  
 
 ---
 
