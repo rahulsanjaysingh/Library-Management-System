@@ -28,13 +28,13 @@ The code demonstrates:
 
 ---
 
-## 📂 Project Structure
+### 📂 Project Structure
 
 LibraryManagementSystem/
 │
 ├── src/
 │ ├── LibraryApp.java # Main GUI + JDBC code
-
+│ ├── LibraryApp.class # Auto-generated compiled class
 ---
 
 
