@@ -67,38 +67,6 @@ Inside `LibraryApp.java` you have:
 
 ---
 
-## 🔌 Database Requirements
-
-Create a MySQL database with the following structure:
-
-```sql
-CREATE DATABASE IF NOT EXISTS library;
-USE library;
-
-CREATE TABLE books (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(100),
-    author VARCHAR(100),
-    isbn VARCHAR(50),
-    added_date DATE
-);
-
-CREATE TABLE members (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100),
-    email VARCHAR(100)
-);
-
-CREATE TABLE issue_records (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    member_id INT,
-    book_id INT,
-    issue_date DATE,
-    return_date DATE,
-    FOREIGN KEY(member_id) REFERENCES members(id),
-    FOREIGN KEY(book_id) REFERENCES books(id)
-);
-
 ---
 
 🧩 Key Features
@@ -187,3 +155,34 @@ App launches with full GUI.
 ✔ JDBC CRUD operations
 ✔ JavaSE-23 runtime environment
 ✔ VS Code project structure
+## 🔌 Database Requirements
+
+Create a MySQL database with the following structure:
+
+```sql
+CREATE DATABASE IF NOT EXISTS library;
+USE library;
+
+CREATE TABLE books (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    author VARCHAR(100),
+    isbn VARCHAR(50),
+    added_date DATE
+);
+
+CREATE TABLE members (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE issue_records (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    member_id INT,
+    book_id INT,
+    issue_date DATE,
+    return_date DATE,
+    FOREIGN KEY(member_id) REFERENCES members(id),
+    FOREIGN KEY(book_id) REFERENCES books(id)
+);
