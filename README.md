@@ -132,21 +132,17 @@ Connection con = DriverManager.getConnection(
 
 ---
 
-🚀 How to Run
+### 🚀 How to Run
 
-Install MySQL and create the required tables.
+1. Install **MySQL** and create the required tables.
+2. Download & add **MySQL Connector/J** to Referenced Libraries.
+3. Open the project in **VS Code** or **IntelliJ**.
+4. Compile & run the project:
 
-Download & add MySQL Connector/J to Referenced Libraries.
-
-Open project in VS Code or IntelliJ.
-
-Compile & Run:
-
+```bash
 javac LibraryApp.java
 java LibraryApp
 
-
-App launches with full GUI.
 
 ---
 
